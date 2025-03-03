@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\ArticleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,9 @@ Route::group([
                          });
     
 });
+
+Route::apiResource("articles", ArticleController::class); 
+
 
 
 
