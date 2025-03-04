@@ -54,7 +54,7 @@ class DatabaseSeeder extends Seeder
             'extract' => 'This is a brief extract of the article.'
         ]);
         $tag3 = Tag::create(['name' => 'newtag']);
-        $article->tags()->attach([$tag3->id]);
+        $article->tags()->attach([$tag3->id, $tag1->id]);
 
     }
 }

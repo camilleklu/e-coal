@@ -13,7 +13,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::with('tags')->get();
+        $articles = Article::all();
         return $articles;
     }
 
@@ -56,7 +56,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        $article->load('tags');
+        // $article->load('tags');
         return $article;
     }
 
@@ -100,5 +100,11 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         //
+    }
+
+    // function getArticlewithTags to get the tags associated to the specified article
+    function getArticlewithTags(Article $article)
+    {
+        return $article->tags;
     }
 }
