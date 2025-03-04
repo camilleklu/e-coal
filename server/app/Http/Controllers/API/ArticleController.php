@@ -127,8 +127,15 @@ class ArticleController extends Controller
     }
 
     // function getArticlewithTags to get the tags associated to the specified article
-    function getArticlewithTags(Article $article)
+    public function getArticlewithTags(Article $article)
     {
         return $article->tags;
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('q');
+        $articles = Article::where('title', 'LIKE', value: "%{$query}%")->get();
+        return response()->json($articles);
     }
 }
