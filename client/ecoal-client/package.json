@@ -10,7 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "ant": "^0.0.0",
+=======
+    "antd": "^5.24.2",
+>>>>>>> dc11753657822228dc48d6a3959a87f7191098b9
     "axios": "^1.8.1",
     "lucide-react": "^0.477.0",
     "react": "^19.0.0",

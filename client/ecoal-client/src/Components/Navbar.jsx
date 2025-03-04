@@ -1,21 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react"; // Ícones do menu
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="w-full bg-white shadow-md py-4 border-b border-black relative flex items-center px-4">
-      {/* Título do site à frente do menu */}
-      <h1 className="text-2xl font-bold italic flex-grow text-left tracking-wide">
-        K-Music Insider
-      </h1>
-      
-      {/* Botão do menu */}
-      <button onClick={() => setMenuOpen(!menuOpen)} className="text-black ml-3">
-        {menuOpen ? <X size={28} /> : <Menu size={28} />}
+    <nav className="p-4 bg-gray-900 flex justify-between items-center relative">
+      <h1 className="text-primary text-2xl font-bold">K-Music Insider</h1>
+
+      <button onClick={() => setMenuOpen(!menuOpen)} className="text-white md:hidden">
+        {menuOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
+<<<<<<< HEAD
       
       {/* Menu lateral quando aberto */}
       {menuOpen && (
@@ -30,6 +27,15 @@ const Navbar = () => {
         </nav>
       )}
     </header>
+=======
+
+      <div className={`absolute top-12 right-4 bg-gray-800 p-4 rounded-lg shadow-lg md:static md:flex md:bg-transparent ${menuOpen ? "block" : "hidden"}`}>
+        <Link to="/search" className="block text-white mx-3 mb-2 md:inline">Search</Link>
+        <Link to="/login" className="block text-white mx-3 mb-2 md:inline">Login</Link>
+        <Link to="/register" className="block text-white mx-3 md:inline">Registar</Link>
+      </div>
+    </nav>
+>>>>>>> dc11753657822228dc48d6a3959a87f7191098b9
   );
 };
 
