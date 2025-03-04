@@ -5,6 +5,7 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login"; 
 import Search from "./Pages/Search";
 import Article from "./Pages/Article";
+import Register from "./Pages/Register";
 
 import "./App.css"; // Importação do CSS
 
@@ -14,8 +15,9 @@ const App = () => {
       <div className="min-h-screen bg-white text-black flex flex-col items-center justify-center p-4 max-w-md mx-auto">
         <Navbar />
         <main className="w-full flex-grow p-4">
-          <Routes>
+          <Routes>+
             <Route path="/" element={<Home />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/search" element={<Search />} />
             <Route path="/article/:id" element={<Article />} />

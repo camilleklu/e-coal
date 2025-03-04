@@ -25,6 +25,7 @@ const Navbar = () => {
             <li><Link to="/articles" className="hover:underline">Articles</Link></li>
             <li><Link to="/search" className="hover:underline">Search</Link></li>
             <li><Link to="/login" className="hover:underline">Login</Link></li>
+            <li><Link to="/register" className="hover:underline">Register</Link></li>
           </ul>
         </nav>
       )}
