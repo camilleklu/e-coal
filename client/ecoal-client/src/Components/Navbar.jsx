@@ -1,35 +1,24 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { MenuOutlined } from "@ant-design/icons";
-import { Drawer, Button } from "antd";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
-  const [visible, setVisible] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="w-full bg-white shadow-md py-4 border-b border-black flex items-center justify-between px-4 max-w-sm mx-auto">
-      <h1 className="text-lg font-bold italic">K-Music Insider</h1>
+    <nav className="p-4 bg-gray-900 flex justify-between items-center relative">
+      <h1 className="text-primary text-2xl font-bold">K-Music Insider</h1>
 
-      {/* Botão para abrir o menu */}
-      <Button type="text" icon={<MenuOutlined />} onClick={() => setVisible(true)} />
+      <button onClick={() => setMenuOpen(!menuOpen)} className="text-white md:hidden">
+        {menuOpen ? <X size={24} /> : <Menu size={24} />}
+      </button>
 
-      {/* Menu lateral para mobile */}
-      <Drawer
-        title="Menu"
-        placement="left"
-        onClose={() => setVisible(false)}
-        visible={visible}
-        width={250} // Ajustado para mobile
-        bodyStyle={{ padding: "10px" }}
-      >
-        <ul className="text-base font-bold space-y-4">
-          <li><Link to="/" onClick={() => setVisible(false)}>Home</Link></li>
-          <li><Link to="/articles" onClick={() => setVisible(false)}>Articles</Link></li>
-          <li><Link to="/search" onClick={() => setVisible(false)}>Search</Link></li>
-          <li><Link to="/login" onClick={() => setVisible(false)}>Login</Link></li>
-        </ul>
-      </Drawer>
-    </header>
+      <div className={`absolute top-12 right-4 bg-gray-800 p-4 rounded-lg shadow-lg md:static md:flex md:bg-transparent ${menuOpen ? "block" : "hidden"}`}>
+        <Link to="/search" className="block text-white mx-3 mb-2 md:inline">Search</Link>
+        <Link to="/login" className="block text-white mx-3 mb-2 md:inline">Login</Link>
+        <Link to="/register" className="block text-white mx-3 md:inline">Registar</Link>
+      </div>
+    </nav>
   );
 };
 

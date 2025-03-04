@@ -9,9 +9,12 @@ import Article from "./Pages/Article";
 import "./App.css"; // Importação do CSS
 
 const App = () => {
+
+  
+
   return (
-    <Router>
-      <div className="min-h-screen bg-white text-black flex flex-col items-center justify-center p-4 max-w-md mx-auto">
+   
+      <div className="">
         <Navbar />
         <main className="w-full flex-grow p-4">
           <Routes>
@@ -19,10 +22,11 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/search" element={<Search />} />
             <Route path="/article/:id" element={<Article />} />
+            <Route path="*" element={<h4>Error 404</h4>} />
+
           </Routes>
         </main>
       </div>
-    </Router>
   );
 };
 

@@ -3,7 +3,7 @@ import React from "react";
 const Article = () => {
   return (
     <div>
-      <h1>Article Page</h1>
+      <h1>Article Pagssse TESTE +</h1>
       <p>This is the article content.</p>
     </div>
   );
