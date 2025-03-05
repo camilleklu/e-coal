@@ -5,6 +5,8 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login"; 
 import Search from "./Pages/Search";
 import Article from "./Pages/Article";
+import "antd/dist/reset.css";
+
 import Register from "./Pages/Register";
 
 import "./App.css"; // Importação do CSS
