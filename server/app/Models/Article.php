@@ -14,4 +14,13 @@ class Article extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+
+    public static function updateLeadStories()
+    {
+        $latestArticles = self::orderBy('date', 'desc')->take(3)->get();
+
+        self::query()->update(['leadStory' => false]);
+
+        self::whereIn('id', $latestArticles->pluck('id'))->update(['leadStory' => true]);
+    }
 }

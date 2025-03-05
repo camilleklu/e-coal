@@ -11,49 +11,49 @@ use App\Models\Tag;
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Seed the application"s database.
      */
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
+        //     "name" => "Test User",
+        //     "email" => "test@example.com",
         // ]);
 
         // The beggining of the first article
         $article = Article::create([
-            'title' => 'Welcome to ecoal25',
-            'content' => '<h1>Hello from ecoal</h1><p>Nice to see you in <strong>Lens</strong>. Enjoy !</p>',
-            'thumbnailURL' => 'ecoal.jpg',
-            'mediaType' => 'image',
-            'mediaURL' => 'ecoal.jpg',
-            'leadStory' => false,
-            'author' => 'John Doe',
-            'date' => now(),
-            'extract' => 'This is a brief extract of the article.'
+            "title" => "Welcome to ecoal25",
+            "content" => "<h1>Hello from ecoal</h1><p>Nice to see you in <strong>Lens</strong>. Enjoy !</p>",
+            "thumbnailURL" => "ecoal.jpg",
+            "mediaType" => "image",
+            "mediaURL" => "ecoal.jpg",
+            // "leadStory" => false,
+            "author" => "John Doe",
+            "date" => now(),
+            "extract" => "This is a brief extract of the article."
         ]);
 
-        $tag1 = Tag::create(['name' => 'ecoal25']);
-        $tag2 = Tag::create(['name' => 'react']);
+        $tag1 = Tag::create(["name" => "ecoal25"]);
+        $tag2 = Tag::create(["name" => "react"]);
 
         $article->tags()->attach([$tag1->id, $tag2->id]);
         // The end of the first article
 
 
         $article = Article::create([
-            'title' => 'This is the second article',
-            'content' => '<h1>Hello from ecoal</h1><p>Nice to see you in <strong>Lens</strong>. Enjoy !</p>',
-            'thumbnailURL' => 'ecoal.jpg',
-            'mediaType' => 'image',
-            'mediaURL' => 'ecoal.jpg',
-            'leadStory' => false,
-            'author' => 'John Doe',
-            'date' => now(),
-            'extract' => 'This is a brief extract of the article.'
+            "title" => "This is the second article",
+            "content" => "<h1>Hello from ecoal</h1><p>Nice to see you in <strong>Lens</strong>. Enjoy !</p>",
+            "thumbnailURL" => "ecoal.jpg",
+            "mediaType" => "image",
+            "mediaURL" => "ecoal.jpg",
+            // "leadStory" => true,
+            "author" => "John Doe",
+            "date" => now(),
+            "extract" => "This is a brief extract of the article."
         ]);
-        $tag3 = Tag::create(['name' => 'newtag']);
+        $tag3 = Tag::create(["name" => "newtag"]);
         $article->tags()->attach([$tag3->id, $tag1->id]);
 
     }
