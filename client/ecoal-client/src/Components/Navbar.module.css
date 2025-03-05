@@ -1,0 +1,21 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+/* .contenue_bar {
+    display: none;
+} */
+
+.logo {
+    text-align: center;
+    align-items: center;
+    width: 100%;
+}
+
+.button {
+    border: none;
+    margin: 0;
+    background-color: white;
+}
