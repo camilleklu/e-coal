@@ -1,0 +1,51 @@
+.footer {
+    background-color: black;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+
+.logo_footer {
+    text-align: center;
+    font-family: 'Permanent Marker';
+    font-size: 1.5rem;
+    padding: 6vw;
+}
+
+.footer h4 {
+    font-size: 1.2rem;
+    padding: 1vw;font-family: "Permanent Marker";
+}
+
+.footer p {
+    font-size: 0.8rem;
+    font-family: 'Noto Sans';
+}
+
+.footer_link_contact {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: auto;
+}
+
+.footer_link {
+    text-align: center;
+    width: 50%;
+    margin: auto;
+}
+
+.line_separation_footer {
+    width: 90%;
+    margin: auto;
+    height: 2px;
+    background-color: white;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    border: none;
+}
+
+.copyright {
+    text-align: center;
+    padding-bottom: 2vh;
+}

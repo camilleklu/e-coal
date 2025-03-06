@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 // import ArticleCard from "../Components/ArticleCard";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import styles from './Home.module.css';
 
 const Home = () => {
     const [leadStories, setLeadStories] = useState([]);
@@ -28,32 +29,35 @@ const Home = () => {
 
     return (
         <div className="">
-            <section className="">
-                <p className="">
-                    <span className="">Issue nº143</span>
-                    <span className="">March 4, 2025</span>
-                </p>
-                <h2 className="">NEWS</h2>
-                <div className="carousel">
+            <section className={styles.top}>
+                <div className={styles.red_text} >
+                    <p >Issue nº143</p>
+                    <p >March 4, 2025</p>
+                </div>
+                <hr className={styles.line_separation_1}></hr>
+                <hr className={styles.line_separation}></hr>
+                <h2 className={styles.title}>NEWS</h2>
+                <hr className={styles.line_separation}></hr>
+                <div className={styles.carousel}>
                     {leadStories.map((article) => (
                         <Link
                             to={`/articles/${article.id}`}
                             key={article.id}
-                            className="carousel-item"
+                            className={styles.carousel_item}
                         >
-                            <h2
+                            <h2 className={styles.title_article}
                                 dangerouslySetInnerHTML={{
                                     __html: article.title,
                                 }}
                             ></h2>
-                            <img
-                                src={article.thumbnailURL}
-                                alt={article.title}
-                            />
+                            <img src={article.thumbnailURL} />
                         </Link>
                     ))}
                 </div>
-                <hr className="" />
+                <hr className={styles.line_separation}></hr>
+                    <Link className={styles.button} to="/articles">Show more</Link>
+                <hr className={styles.line_separation_bottom}></hr>
+                
             </section>
         </div>
     );
