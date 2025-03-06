@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('thumbnailURL');
             $table->string('mediaType')->nullable();
             $table->string('mediaURL')->nullable();
-            $table->boolean('leadStory');
+            $table->boolean('leadStory')->default(false);
             $table->string('author');
             $table->date('date');
             $table->text('extract');

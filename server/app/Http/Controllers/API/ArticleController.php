@@ -56,10 +56,12 @@ class ArticleController extends Controller
             }
             $newArticle->tags()->attach($tagIds);
         }
+
         Article::updateLeadStories();
 
         return response()->json($newArticle, 201);
     }
+
 
     /**
      * Display the specified resource.
@@ -109,6 +111,7 @@ class ArticleController extends Controller
             $article->tags()->sync($tagIds);
         }
 
+        // Mettre à jour les leadStories après la mise à jour d'un article
         Article::updateLeadStories();
 
         return response()->json($article, 200);
