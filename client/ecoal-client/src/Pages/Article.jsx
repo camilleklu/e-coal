@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import styles from './Article.module.css';
 
 function Article() {
     const { id } = useParams(); // Récupération de l'ID de l'article depuis l'URL
