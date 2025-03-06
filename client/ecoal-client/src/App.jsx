@@ -4,7 +4,7 @@ import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Search from "./Pages/Search";
-import Article from "./Pages/Article";
+import Articles from "./Pages/Articles";
 import "antd/dist/reset.css";
 
 import Register from "./Pages/Register";
@@ -20,7 +20,8 @@ const App = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/search" element={<Search />} />
-                    <Route path="/article/:id" element={<Article />} />
+                    <Route path="/articles" element={<Articles />} />
+                    {/* <Route path="/article/:id" element={<Article />} /> */}
                     <Route path="*" element={<h4>Error 404</h4>} />
                 </Routes>
             </main>
