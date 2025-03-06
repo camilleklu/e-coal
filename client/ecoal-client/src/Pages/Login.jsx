@@ -17,7 +17,17 @@ const Login = ({ setCookie }) => {
                     password,
                 }
             );
-            setCookie(response.data.access_token, email);
+
+            // Stockez le token ET le rôle de l'utilisateur dans le cookie
+            setCookie(
+                "mycookie",
+                {
+                    token: response.data.access_token,
+                    role: response.data.user.role, // Assurez-vous que le backend renvoie le rôle
+                },
+                { path: "/" }
+            );
+
             navigate("/");
         } catch (error) {
             console.error("Login failed", error);
