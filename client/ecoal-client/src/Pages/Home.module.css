@@ -25,6 +25,14 @@
     margin-bottom: 3vw;
 }
 
+.line_separation_bottom {
+    height: 2px;
+    background-color: black;
+    border: none;
+    margin-top: 3vw;
+    margin-bottom: 12vw;
+}
+
 .line_separation {
     height: 2px;
     background-color: black;

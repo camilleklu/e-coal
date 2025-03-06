@@ -56,7 +56,7 @@ const Home = () => {
                 </div>
                 <hr className={styles.line_separation}></hr>
                     <Link className={styles.button} to="/articles">Voir Plus</Link>
-                <hr className={styles.line_separation}></hr>
+                <hr className={styles.line_separation_bottom}></hr>
                 
             </section>
         </div>
