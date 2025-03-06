@@ -14,7 +14,7 @@ const Navbar = () => {
       </button>
 
       <div className={`absolute top-12 right-4 bg-gray-800 p-4 rounded-lg shadow-lg md:static md:flex md:bg-transparent ${menuOpen ? "block" : "hidden"}`}>
-        <Link to="/search" className="block text-white mx-3 mb-2 md:inline">Search</Link>
+        <Link to="/search" className="block text-white mx-3 mb-2 md:inline">Search</Link><br></br>
         <Link to="/login" className="block text-white mx-3 mb-2 md:inline">Login</Link>
         <Link to="/register" className="block text-white mx-3 md:inline">Registar</Link>
       </div>
