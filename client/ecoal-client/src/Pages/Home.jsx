@@ -35,7 +35,11 @@ const Home = () => {
                 <h2 className="">NEWS</h2>
                 <div className="carousel">
                     {leadStories.map((article) => (
-                        <div key={article.id} className="carousel-item">
+                        <Link
+                            to={`/articles/${article.id}`}
+                            key={article.id}
+                            className="carousel-item"
+                        >
                             <h2
                                 dangerouslySetInnerHTML={{
                                     __html: article.title,
