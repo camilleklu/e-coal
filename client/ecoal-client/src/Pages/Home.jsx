@@ -37,7 +37,7 @@ const Home = () => {
                 <div className="carousel">
                     {leadStories.map((article) => (
                         <Link
-                            to={`/article/${article.id}`}
+                            to={`/articles/${article.id}`}
                             key={article.id}
                             className="carousel-item"
                         >
