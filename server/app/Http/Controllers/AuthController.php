@@ -60,4 +60,16 @@ class AuthController extends Controller
         Auth::user()->tokens()->delete();
         return response()->json(["message" => "Logout."]);
     }
+
+    public function createAdmin(Request $request)
+    {
+        $user = User::create([
+            'name' => 'admin',
+            'email' => 'admin@example.com',
+            'password' => 'password',
+            'role' => 'admin',
+        ]);
+
+        return response()->json(['message' => 'Admin created']);
+    }
 }
