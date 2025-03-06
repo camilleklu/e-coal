@@ -52,6 +52,7 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'Bearer',
+            'user' => $user
         ]);
     }
 
@@ -61,15 +62,15 @@ class AuthController extends Controller
         return response()->json(["message" => "Logout."]);
     }
 
-    public function createAdmin(Request $request)
-    {
-        $user = User::create([
-            'name' => 'admin',
-            'email' => 'admin@example.com',
-            'password' => 'password',
-            'role' => 'admin',
-        ]);
+    // public function createAdmin(Request $request)
+    // {
+    //     $user = User::create([
+    //         'name' => 'admin',
+    //         'email' => 'admin@example.com',
+    //         'password' => 'password',
+    //         'role' => 'admin',
+    //     ]);
 
-        return response()->json(['message' => 'Admin created']);
-    }
+    //     return response()->json(['message' => 'Admin created']);
+    // }
 }
