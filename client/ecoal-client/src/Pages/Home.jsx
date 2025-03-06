@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../Components/Navbar";
-import { Carousel, Button } from "antd";
-import ArticleCard from "../Components/ArticleCard";
+// import Navbar from "../Components/Navbar";
+// import { Carousel, Button } from "antd";
+// import ArticleCard from "../Components/ArticleCard";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Home = () => {
     const [leadStories, setLeadStories] = useState([]);
@@ -45,8 +46,11 @@ const Home = () => {
                                     __html: article.title,
                                 }}
                             ></h2>
-                            <img src={article.thumbnailURL} />
-                        </div>
+                            <img
+                                src={article.thumbnailURL}
+                                alt={article.title}
+                            />
+                        </Link>
                     ))}
                 </div>
                 <hr className="" />

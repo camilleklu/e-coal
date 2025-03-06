@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 function Article({ isAuthenticated, cookies }) {
-    const [articles, setArticles] = useState([]);
+    const { id } = useParams(); // Récupération de l'ID de l'article depuis l'URL
+    const [article, setArticle] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
     useEffect(() => {
-        const fetchArticles = async () => {
+        const fetchArticle = async () => {
             try {
                 const response = await axios.get(
-                    "http://localhost:8000/api/articles",
+                    `http://localhost:8000/api/articles/${id}`,
                     {
                         headers: isAuthenticated
                             ? {
@@ -16,27 +21,36 @@ function Article({ isAuthenticated, cookies }) {
                             : {},
                     }
                 );
-                setArticles(response.data);
+                setArticle(response.data);
             } catch (error) {
-                console.error("Failed to fetch articles", error);
+                console.error("Failed to fetch article", error);
+                setError("Failed to load article. Check your backend.");
+            } finally {
+                setLoading(false);
             }
         };
 
-        fetchArticles();
-    }, [isAuthenticated, cookies]);
+        fetchArticle();
+    }, [id, isAuthenticated, cookies]);
+
+    if (loading) return <p>Loading article...</p>;
+    if (error) return <p style={{ color: "red" }}>{error}</p>;
+    if (!article) return <p>No article found.</p>;
 
     return (
         <div>
-            {articles.map((article) => (
-                <div key={article.id}>
-                    <h2>{article.title}</h2>
-                    <p>
-                        {isAuthenticated
-                            ? article.content
-                            : `${article.content.substring(0, 100)}...`}
-                    </p>
-                </div>
-            ))}
+            <h2
+                dangerouslySetInnerHTML={{
+                    __html: article.title,
+                }}
+            ></h2>
+            <p
+                dangerouslySetInnerHTML={{
+                    __html: isAuthenticated
+                        ? article.content
+                        : `${article.content.substring(0, 100)}...`,
+                }}
+            ></p>
         </div>
     );
 }
