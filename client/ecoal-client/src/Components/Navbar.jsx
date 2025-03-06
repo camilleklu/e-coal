@@ -41,9 +41,9 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
                     </Link>
                 </li>
                 {isAuthenticated ? (
-                    <>
+                    <li className={styles["navbar-item"]}>
                         <Logout onLogout={onLogout} />
-                    </>
+                    </li>
                 ) : (
                     <li className={styles["navbar-item"]}>
                         <Link to="/login" onClick={toggleMenu}>
@@ -51,11 +51,11 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
                         </Link>
                     </li>
                 )}
-                <li className={styles["navbar-item"]}>
+                {/* <li className={styles["navbar-item"]}>
                     <Link to="/register" onClick={toggleMenu}>
                         Register
                     </Link>
-                </li>
+                </li> */}
             </ul>
         </nav>
     );
