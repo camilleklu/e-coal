@@ -13,6 +13,8 @@ import Articles from "./Pages/Articles";
 import Article from "./Pages/Article";
 import Register from "./Pages/Register";
 
+import "./App.css"; // Importation du CSS
+
 const App = () => {
     const [cookies, setCookie, removeCookie] = useCookies(["mycookie"]);
     const [isAuthenticated, setIsAuthenticated] = useState(!!cookies.mycookie);
@@ -33,7 +35,6 @@ const App = () => {
 
             removeCookie("mycookie", { path: "/" });
             setIsAuthenticated(false);
-            navigate("/");
         } catch (error) {
             console.error("Erreur lors de la déconnexion", error);
         }
@@ -42,6 +43,7 @@ const App = () => {
     return (
         <div className="">
             <Navbar isAuthenticated={isAuthenticated} onLogout={handleLogout} />
+
             <main className="">
                 <Routes>
                     <Route

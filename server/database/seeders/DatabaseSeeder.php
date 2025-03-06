@@ -36,8 +36,8 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
-        $tag1 = Tag::create(["name" => "ecoal25"]);
-        $tag2 = Tag::create(["name" => "react"]);
+        $tag1 = Tag::create(["name" => "Tamagotchi"]);
+        $tag2 = Tag::create(["name" => "Stray Kids"]);
         $article->tags()->attach([$tag1->id, $tag2->id]);
 
         // Deuxième article
@@ -53,8 +53,8 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
-        $tag3 = Tag::create(["name" => "newtag"]);
-        $article->tags()->attach([$tag3->id, $tag1->id]);
+        $tag3 = Tag::create(["name" => "Seventeen"]);
+        $article->tags()->attach([$tag3->id]);
 
         // Troisième article
         $article = Article::create([
@@ -69,6 +69,9 @@ class DatabaseSeeder extends Seeder
             "extract" => "<p>G-Dragon has once again proven his dominance in the music industry with the release of his latest album 'Übermensch.'</p>"
 
         ]);
+        $tag4 = Tag::create(["name" => "G-Dragon"]);
+        $article->tags()->attach([$tag4->id]);
+
         // Quatrième article
         $article = Article::create([
             "title" => "<h2>NMIXX introduces their new ship project: MMU for their upcoming comeback with 'Fe3O4: FORWARD'</h2>",
@@ -81,6 +84,8 @@ class DatabaseSeeder extends Seeder
             "extract" => "<p>NMIXX rolled out a stunning visual film teaser for their upcoming mini-album 'Fe3O4: FORWARD,' introducing a new project.</p>"
 
         ]);
+        $tag5 = Tag::create(["name" => "NMIXX"]);
+        $article->tags()->attach([$tag5->id]);
         // Cinquième article
         $article = Article::create([
             "title" => "<h2>Lisa makes history at the Oscars, wows in Korean designer's couture</h2>",

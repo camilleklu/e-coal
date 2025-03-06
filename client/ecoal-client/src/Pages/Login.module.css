@@ -44,47 +44,66 @@
 .title {
     font-family: 'Permanent Marker';
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 3rem;
     margin: 0;
     padding: 0;
 }
 
-.places_text {
+.place_form {
     margin-top: 3vh;
+    margin-bottom: 3vh;
 }
 
-img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 2vh;
-}
-
-.text {
-    margin-top: 1vh;
-    margin-bottom: 1vh;
-    font-size: 1rem;
-    width: 90%;
+.form {
+    width: 65%;
     margin: auto;
+    padding: 1vw 4vw 1vw 4vw;
+    border: solid 2px black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.paire {
+    display: flex;
+    flex-direction: column;
+    margin: 4vw;
+    margin-bottom: 4vw;
     font-family: 'Noto Sans';
 }
 
-.login_read {
-    color: grey;
-    width: 90%;
-    margin: auto;
-    font-family: "Noto Sans";
+.paire label {
+    margin-bottom: 2vw;
+    font-size: 0.8rem;
 }
 
-.tags{
-    display: flex;
-    align-items: center;
-    justify-content: start;
+.paire input {
+    padding: 2vw;
+    border-radius: 10px;
+    border: solid 1px black;
 }
 
-.tags p {
+.form button {
+    margin-top: 4vw;
+    margin-bottom: 4vw;
+    padding: 2vw 4vw;
+    border-radius: 999px;
     background-color: #E60C0C;
     color: white;
-    padding: 3%;
-    margin-left: 3vw;
-    font-family: "Noto Sans";
+    font-family: 'Noto Sans';
+    font-size: 0.8rem;
+    border: none;
+    display: flex;
+}
+
+.text {
+    margin-bottom: 1vh;
+    font-size: 1rem;
+    margin: auto;
+    font-family: 'Noto Sans';
+    text-align: center;
+}
+
+.texte_red {
+    color: #E60C0C;
 }

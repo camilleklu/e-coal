@@ -1,0 +1,118 @@
+.red_text {
+    color: #E60C0C;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 6vw;
+    font-family: 'Noto Sans';
+}
+
+.red_text p {
+    margin: 0;
+    padding: 0;
+}
+
+.top {
+    width: 95%;
+    margin: auto;
+}
+
+.line_separation_1 {
+    height: 2px;
+    background-color: black;
+    border: none;
+    margin-bottom: 3vw;
+}
+
+.line_separation_bottom {
+    height: 2px;
+    background-color: black;
+    border: none;
+    margin-top: 3vw;
+    margin-bottom: 12vw;
+}
+
+.line_separation {
+    height: 2px;
+    background-color: black;
+    border: none;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+}
+
+.title {
+    font-family: 'Permanent Marker';
+    text-align: center;
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
+}
+
+.bar_search {
+    width: 90%;
+    margin: auto;
+    background-color: white;
+    border-radius: 999px;
+    box-shadow: 1px 3px 18px 2px rgba(0, 0, 0, 0.25);
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-left: 2vw;
+}
+
+.bar_search input {
+    width: 75%;
+    font-size: 1rem;
+    border: none;
+    font-family: 'Noto Sans';
+}
+
+.bar_search button {
+    border: none;
+    font-size: 1rem;
+    font-family: 'Noto Sans';
+    background-color: white;
+    color: #E60C0C;
+}
+
+.no_result {
+    font-family: 'Noto Sans';
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 5vw;
+}
+
+.search_item {
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    background-color: white;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    padding: 0;
+    box-shadow: 1px 3px 18px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+}
+
+.search_item img {
+    width: 100%;
+    height: auto;
+    border-radius: 25px 25px 0px 0px;
+}
+
+.title {
+    font-family: 'Permanent Marker';
+    text-align: center;
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
+}
+
+.title_article {
+    font-family: 'Permanent Marker';
+    color: black;
+    font-size: 1rem;
+    text-align: center;
+    padding: 1vh 2vw 0vh 2vw;
+}
