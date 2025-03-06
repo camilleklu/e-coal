@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import styles from './Articles.module.css';
 
 function Articles() {
     const [articles, setArticles] = useState([]);
@@ -30,16 +31,34 @@ function Articles() {
 
     return (
         <div>
-            <h1>Articles</h1>
-            <ul>
+            <section className={styles.top}>
+                <div className={styles.red_text} >
+                    <p >Issue nº143</p>
+                    <p >March 4, 2025</p>
+                </div>
+                <hr className={styles.line_separation_1}></hr>
+                <hr className={styles.line_separation}></hr>
+                <h2 className={styles.title}>Articles</h2>
+                <hr className={styles.line_separation}></hr>
+
+
+            <div className={styles.grid}>
                 {articles.map((article) => (
-                    <li key={article.id}>
-                        <Link to={`/articles/${article.id}`}>
-                            <strong>{article.title}</strong>
-                        </Link>
-                    </li>
+                    <Link to={`/articles/${article.id}`}
+                        key={article.id}
+                        className={styles.grid_item}
+                    >
+                        <h2 className={styles.title_article}
+                            dangerouslySetInnerHTML={{
+                                __html: article.title,
+                            }}
+                        ></h2>
+                        <img src={article.thumbnailURL} />
+                    </Link>
                 ))}
-            </ul>
+            </div>
+                <hr className={styles.line_separation_bottom}></hr>
+                </section>
         </div>
     );
 }
