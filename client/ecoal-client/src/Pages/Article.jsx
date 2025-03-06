@@ -51,7 +51,7 @@ function Article() {
             </p>
             {!isAuthenticated && (
                 <p style={{ color: "gray" }}>
-                    Connectez-vous pour lire l'article en entier.
+                    Log in to read the full article.
                 </p>
             )}
         </div>

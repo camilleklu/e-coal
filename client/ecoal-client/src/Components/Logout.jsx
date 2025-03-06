@@ -3,7 +3,7 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 
 const Logout = ({ onLogout }) => {
-    const [, , removeCookie] = useCookies(["mycookie"]);
+    const [cookies, , removeCookie] = useCookies(["mycookie"]);
 
     const handleLogout = async () => {
         try {
@@ -12,7 +12,9 @@ const Logout = ({ onLogout }) => {
                     Authorization: `Bearer ${cookies.mycookie.token}`,
                 },
             });
+
             removeCookie("mycookie", { path: "/" });
+
             onLogout();
         } catch (error) {
             console.error("Erreur lors de la déconnexion", error);
