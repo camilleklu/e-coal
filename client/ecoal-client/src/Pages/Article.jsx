@@ -11,7 +11,7 @@ function Articles() {
       const response = await axios.get('http://localhost:8000/api/articles'); 
       setArticles(response.data); 
     } catch (err) {
-      setError("Failed to load articles. Check your backend."); 
+      setError("Failed to load articles."); 
       console.error(err);
     } finally {
       setLoading(false); 
