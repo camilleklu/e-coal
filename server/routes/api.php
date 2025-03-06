@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\ArticleController;
 use App\Http\Controllers\API\TagController;
+use App\Http\Controllers\AdminController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,7 @@ use App\Http\Controllers\AuthController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+//Route::post('/create-admin', [AuthController::class, 'createAdmin']);
 
 Route::group([
     'middleware' => 'auth:sanctum',
@@ -34,10 +36,16 @@ Route::group([
     });
 
 });
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->middleware('admin');
+});
+
+
 
 Route::apiResource("articles", ArticleController::class);
 Route::get('/articles/{article}/tags', [ArticleController::class, 'getArticlewithTags']);
-Route::get('/articles/search', [ArticleController::class, 'search']);
+Route::get('/search', [ArticleController::class, 'search']);
+Route::get('/lead-stories', [ArticleController::class, 'getLeadStories']);
 
 
 

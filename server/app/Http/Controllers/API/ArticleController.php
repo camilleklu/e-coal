@@ -30,7 +30,6 @@ class ArticleController extends Controller
             'thumbnailURL' => 'required|string',
             'mediaType' => 'nullable|string',
             'mediaURL' => 'nullable|string',
-            'leadStory' => 'required|boolean',
             'author' => 'required|string|max:255',
             'date' => 'required|date',
             'extract' => 'required|string',
@@ -44,7 +43,6 @@ class ArticleController extends Controller
             'thumbnailURL' => $request->input("thumbnailURL"),
             'mediaType' => $request->input("mediaType"),
             'mediaURL' => $request->input("mediaURL"),
-            'leadStory' => $request->input("leadStory"),
             'author' => $request->input("author"),
             'date' => $request->input("date"),
             'extract' => $request->input("extract")
@@ -58,8 +56,12 @@ class ArticleController extends Controller
             }
             $newArticle->tags()->attach($tagIds);
         }
+
+        Article::updateLeadStories();
+
         return response()->json($newArticle, 201);
     }
+
 
     /**
      * Display the specified resource.
@@ -82,7 +84,6 @@ class ArticleController extends Controller
             'thumbnailURL' => 'required|string',
             'mediaType' => 'nullable|string',
             'mediaURL' => 'nullable|string',
-            'leadStory' => 'required|boolean',
             'author' => 'required|string|max:255',
             'date' => 'required|date',
             'extract' => 'required|string',
@@ -96,7 +97,6 @@ class ArticleController extends Controller
             'thumbnailURL' => $request->input("thumbnailURL"),
             'mediaType' => $request->input("mediaType"),
             'mediaURL' => $request->input("mediaURL"),
-            'leadStory' => $request->input("leadStory"),
             'author' => $request->input("author"),
             'date' => $request->input("date"),
             'extract' => $request->input("extract")
@@ -110,6 +110,9 @@ class ArticleController extends Controller
             }
             $article->tags()->sync($tagIds);
         }
+
+        // Mettre à jour les leadStories après la mise à jour d'un article
+        Article::updateLeadStories();
 
         return response()->json($article, 200);
     }
@@ -135,7 +138,20 @@ class ArticleController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('q');
-        $articles = Article::where('title', 'LIKE', value: "%{$query}%")->get();
+
+        $articles = Article::where('title', 'like', '%' . $query . '%')
+            ->orWhereHas('tags', function ($q) use ($query) {
+                $q->where('name', 'like', '%' . $query . '%');
+            })
+            ->get();
+
         return response()->json($articles);
     }
+
+    public function getLeadStories()
+    {
+        $leadStories = Article::where('leadStory', true)->get();
+        return response()->json($leadStories);
+    }
+
 }

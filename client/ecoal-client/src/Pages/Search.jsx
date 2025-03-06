@@ -1,13 +1,12 @@
-
 import React from "react";
+import SearchPage from "../Components/SearchPage";
 
-const Search= () => {
-  return (
-    <div>
-      <h1>Article Page</h1>
-      <p>This is the article content.</p>
-    </div>
-  );
-};
+function Search() {
+    return (
+        <div>
+            <SearchPage />
+        </div>
+    );
+}
 
-export default Search; // ✅ Garante que esta linha existe!
+export default Search;

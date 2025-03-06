@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ setCookie }) => {
+const Register = () => {
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -10,32 +11,25 @@ const Login = ({ setCookie }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(
-                "http://localhost:8000/api/login",
-                {
-                    email,
-                    password,
-                }
-            );
-
-            // Stockez le token ET le rôle de l'utilisateur dans le cookie
-            setCookie(
-                "mycookie",
-                {
-                    token: response.data.access_token,
-                    role: response.data.user.role, // Assurez-vous que le backend renvoie le rôle
-                },
-                { path: "/" }
-            );
-
-            navigate("/");
+            await axios.post("http://localhost:8000/api/register", {
+                name,
+                email,
+                password,
+            });
+            navigate("/login");
         } catch (error) {
-            console.error("Login failed", error);
+            console.error("Registration failed", error);
         }
     };
 
     return (
         <form onSubmit={handleSubmit}>
+            <input
+                type="text"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+            />
             <input
                 type="email"
                 placeholder="Email"
@@ -48,9 +42,9 @@ const Login = ({ setCookie }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <button type="submit">Login</button>
+            <button type="submit">Register</button>
         </form>
     );
 };
 
-export default Login;
+export default Register;

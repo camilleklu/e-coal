@@ -1,24 +1,40 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import styles from './Navbar.module.css';
+import 'boxicons';
+
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <nav className="p-4 bg-gray-900 flex justify-between items-center relative">
-      <h1 className="text-primary text-2xl font-bold">K-Music Insider</h1>
 
-      <button onClick={() => setMenuOpen(!menuOpen)} className="text-white md:hidden">
-        {menuOpen ? <X size={24} /> : <Menu size={24} />}
-      </button>
-
-      <div className={`absolute top-12 right-4 bg-gray-800 p-4 rounded-lg shadow-lg md:static md:flex md:bg-transparent ${menuOpen ? "block" : "hidden"}`}>
-        <Link to="/search" className="block text-white mx-3 mb-2 md:inline">Search</Link>
-        <Link to="/login" className="block text-white mx-3 mb-2 md:inline">Login</Link>
-        <Link to="/register" className="block text-white mx-3 md:inline">Registar</Link>
+    <nav className={styles.navbar}>
+      <div className={styles.navbar_logo_burger}>
+      <div className="navbar-burger" onClick={toggleMenu}>
+      <box-icon name='menu' className={styles.icon}></box-icon>
       </div>
-    </nav>
+      <h1 className={styles.logo}>K-Music Insider</h1>
+      </div>
+      <ul className={`${styles['navbar-list']} ${menuOpen ? styles.show : ''}`}> 
+        <li className={styles['navbar-item']}><Link to="/" onClick={toggleMenu}>Home</Link></li>
+        <li className={styles['navbar-item']}><Link to="/articles" onClick={toggleMenu}>Articles</Link></li>
+        <li className={styles['navbar-item']}><Link to="/search" onClick={toggleMenu}>Search</Link></li>
+        <li className={styles['navbar-item']}><Link to="/login" onClick={toggleMenu}>Login</Link></li>
+        <li className={styles['navbar-item']}><Link to="/register" onClick={toggleMenu}>Register</Link></li>
+      </ul>
+
+
+
+
+
+      
+    </nav >
   );
 };
 
