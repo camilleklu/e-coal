@@ -45,7 +45,7 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::apiResource("articles", ArticleController::class);
 Route::get('/articles/{article}/tags', [ArticleController::class, 'getArticlewithTags']);
 Route::get('/search', [ArticleController::class, 'search']);
-// Route::get('/lead-stories', [ArticleController::class, 'getLeadStories']);
+Route::get('/lead-stories', [ArticleController::class, 'getLeadStories']);
 
 
 
