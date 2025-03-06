@@ -12,7 +12,7 @@ import Search from "./Pages/Search";
 import Articles from "./Pages/Articles";
 import Article from "./Pages/Article";
 import "antd/dist/reset.css";
-
+import Admin from "./Pages/Admin";
 import Register from "./Pages/Register";
 
 import "./App.css"; // Importação do CSS
@@ -45,7 +45,7 @@ const App = () => {
                     <Route path="/articles" element={<Articles />} />
                     <Route path="/articles/:id" element={<Article />} />
                     {/* <Route path="/admin" element={<Admin />} /> */}
-
+                    <Route path="/admin" element={<Admin />} />
                     <Route path="*" element={<h4>Error 404</h4>} />
                 </Routes>
             </main>

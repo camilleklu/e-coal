@@ -1,58 +1,71 @@
+// src/Pages/Article.js
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
-function Article({ isAuthenticated, cookies }) {
-    const { id } = useParams(); // Récupération de l'ID de l'article depuis l'URL
-    const [article, setArticle] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+const Article = () => {
+  const { id } = useParams();
+  const [article, setArticle] = useState(null);
+  const [cookies] = useCookies(["mycookie"]);
 
-    useEffect(() => {
-        const fetchArticle = async () => {
-            try {
-                const response = await axios.get(
-                    `http://localhost:8000/api/articles/${id}`,
-                    {
-                        headers: isAuthenticated
-                            ? {
-                                  Authorization: `Bearer ${cookies.mycookie.token}`,
-                              }
-                            : {},
-                    }
-                );
-                setArticle(response.data);
-            } catch (error) {
-                console.error("Failed to fetch article", error);
-                setError("Failed to load article. Check your backend.");
-            } finally {
-                setLoading(false);
-            }
-        };
+  // Fetch the article from the backend using the id
+  useEffect(() => {
+    const fetchArticle = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/api/articles/${id}`);
+        setArticle(response.data);
+      } catch (error) {
+        console.error("Error fetching article", error);
+      }
+    };
 
-        fetchArticle();
-    }, [id, isAuthenticated, cookies]);
+    fetchArticle();
+  }, [id]);
 
-    if (loading) return <p>Loading article...</p>;
-    if (error) return <p style={{ color: "red" }}>{error}</p>;
-    if (!article) return <p>No article found.</p>;
+  // Check if a user is logged in and is a normal user (not admin)
+  useEffect(() => {
+    if (article && cookies.mycookie && cookies.mycookie.role !== "admin") {
+      // Redirect normal users to the full article on the external media URL
+      window.location.href = article.mediaURL;
+    }
+  }, [article, cookies]);
 
-    return (
+  if (!article) return <p>Loading...</p>;
+
+  // Determine if a user is logged in
+  const isLoggedIn = !!cookies.mycookie;
+  const isAdmin = isLoggedIn && cookies.mycookie.role === "admin";
+
+  return (
+    <div>
+      <h2>{article.title}</h2>
+      {/* If no user is logged in or if the logged in user is an admin, show thumbnail & extract */}
+      {( !isLoggedIn || isAdmin ) && (
+        <>
+          <img
+            src={article.thumbnailURL}
+            alt={article.title}
+            style={{ width: "200px", display: "block", marginBottom: "10px" }}
+          />
+          <p>{article.extract}</p>
+          <p>
+            <em>Login to read the full article.</em>
+          </p>
+        </>
+      )}
+      {/* For normal logged-in users, useEffect above handles the redirection.
+          We include a fallback message and link in case the automatic redirect doesn't work. */}
+      {isLoggedIn && !isAdmin && (
         <div>
-            <h2
-                dangerouslySetInnerHTML={{
-                    __html: article.title,
-                }}
-            ></h2>
-            <p
-                dangerouslySetInnerHTML={{
-                    __html: isAuthenticated
-                        ? article.content
-                        : `${article.content.substring(0, 100)}...`,
-                }}
-            ></p>
+          <p>
+            Redirecting to the full article... If you are not redirected automatically,{" "}
+            <a href={article.mediaURL}>click here</a>.
+          </p>
         </div>
-    );
-}
+      )}
+    </div>
+  );
+};
 
 export default Article;
