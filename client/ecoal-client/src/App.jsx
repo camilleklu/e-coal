@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
+import {
+    BrowserRouter as Router,
+    Route,
+    Routes,
+    useNavigate,
+} from "react-router-dom";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 
@@ -18,6 +22,7 @@ import Register from "./Pages/Register";
 const App = () => {
     const [cookies, setCookie, removeCookie] = useCookies(["mycookie"]);
     const [isAuthenticated, setIsAuthenticated] = useState(!!cookies.mycookie);
+    const navigate = useNavigate();
 
     const handleLogin = (token, name) => {
         setCookie("mycookie", { name, token }, { path: "/" });
@@ -72,7 +77,6 @@ const App = () => {
                             />
                         }
                     />
-                    {/* <Route path="/admin" element={<Admin />} /> */}
                     <Route path="/admin" element={<Admin />} />
                     <Route path="*" element={<h4>Error 404</h4>} />
                 </Routes>
