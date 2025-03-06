@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 
 import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Search from "./Pages/Search";
@@ -46,6 +47,7 @@ const App = () => {
                     <Route path="*" element={<h4>Error 404</h4>} />
                 </Routes>
             </main>
+            <Footer />
         </div>
     );
 };
